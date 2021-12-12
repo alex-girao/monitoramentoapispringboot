@@ -22,10 +22,13 @@ OBS: Está implementação atende a versão Version 2.4.x, caso a sua versão se
 </dependency>
 ```
 #### 2- Alterar seu arquivo de configurações(application.properties ou application.yml) apontando para o projeto de monitoramento e liberando acessos.
+```code
 spring.boot.admin.client.url=http://localhost:8080  
 management.endpoints.web.exposure.include=*
+```
 
 #### 3- Alterar a sua classe de segurança WebSecurityConfigurerAdapter para liberar os Endpoints.
+```code
 @Configuration
 public static class SecurityPermitAllConfig extends WebSecurityConfigurerAdapter {
     @Override
@@ -34,3 +37,4 @@ public static class SecurityPermitAllConfig extends WebSecurityConfigurerAdapter
             .and().csrf().disable();
     }
 }
+```
